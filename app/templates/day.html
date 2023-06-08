@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{ date }}</h3>
+    </div>
+
+    <div class="panel-body">
+
+      <form method="POST" action="{{ url_for('day', id=date_id) }}">
+        <div class="form-group">
+          <select class="form-control" name="food-name">
+            {% for food in foods %}
+            <option value="{{ food.id }}">{{ food.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+
+      </form>
+
+      <div class="page-header"></div>
+      
+      <ul class="nav nav-pills" role="tablist">
+        <li class="active"><a>Total</a></li>
+        <li><a>Protein: <span class="badge">{{ total.protein }}</span></a></li>
+        <li><a>Carbohydates: <span class="badge">{{ total.carbohydrates }}</span></a></li>
+        <li><a>Fat: <span class="badge">{{ total.fat }}</span></a></li>
+        <li><a>Calories: <span class="badge">{{ total.calories }}</span></a></li>
+      </ul>
+
+    </div>
+
+    <div class="page-header"></div>
+    {%for food_day in foods_day %}
+    <div class="panel-body">
+      <ul class="nav nav-pills" role="tablist">
+        <li class="active"><a>{{ food_day.food.name }}</a></li>
+        <li><a>Protein: <span class="badge">{{ food_day.food.protein }}</span></a></li>
+        <li><a>Carbohydates: <span class="badge">{{ food_day.food.carbohydates }}</span></a></li>
+        <li><a>Fat: <span class="badge">{{ food_day.food.fat }}</span></a></li>
+        <li><a>Calories: <span class="badge">{{ food_day.food.calories }}</span></a></li>
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock content %}
