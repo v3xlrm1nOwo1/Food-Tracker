@@ -9,7 +9,7 @@ class Log_date(db.Model):
     date = db.Column(db.Date, nullable=True)
     
     def __repr__(self):
-        return '<Task %r>' % self.id
+        return '<ID %r>' % self.id
 
 
 class Food(db.Model):
@@ -21,7 +21,7 @@ class Food(db.Model):
     calories = db.Column(db.Integer, nullable=True)
     
     def __repr__(self):
-        return '<Task %r>' % self.id
+        return '<ID %r>' % self.id
     
 
 class Food_date(db.Model):
@@ -29,5 +29,5 @@ class Food_date(db.Model):
     log_date_id = db.Column(db.Integer, primary_key=True)
     
     def __repr__(self):
-        return '<Task %r>' % self.log_date_id
+        return '<ID %r>' % self.log_date_id
     
